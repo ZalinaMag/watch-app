@@ -1,8 +1,8 @@
 const React = require("react");
-
+const Card = require("./WatchCardComponent");
 const Layout = require("./Layout");
 
-function Home({ login }) {
+function Home({ login, allWatch }) {
   return (
     <Layout login={login}>
       <body>
@@ -65,7 +65,103 @@ function Home({ login }) {
         <div className="makeOrder">
           <button className="order">Make an order</button>
         </div>
-        {/* <script defer src="js/order.js" /> */}
+        <div className="filterContain">
+          <button className="btnGenderMan">asfaf</button>
+          <button className="btnGenderWom">asfasf</button>
+          <button className="btnColorGold">asfasf</button>
+          <button className="btnColorSilver">dgssgssdg</button>
+          {login === "admin" && <button className="addCard">admin</button>}
+        </div>
+        <div className="watchContainer">
+          {allWatch.map((watch) => (
+            <Card watch={watch} key={watch.id} login={login} />
+          ))}
+        </div>
+        <div className="orderPage">
+          {login && (
+            <>
+              <h2>Пожалуйста, заполните форму заказа</h2>
+              <hr />
+              <form
+                className="orderForm"
+                method="POST"
+                action="/order/submit"
+                encType="multipart/form-data"
+              >
+                <input type="text" name="name" placeholder="имя" required />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="адрес электронной почты"
+                  required
+                />
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="номер телефона"
+                  required
+                />
+                <input
+                  type="text"
+                  name="comment"
+                  placeholder="комментарии"
+                  required
+                />
+                <input type="file" name="image" required />
+                <button
+                  type="submit"
+                  class="modalBtn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  сделать заказ
+                </button>
+
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                          Заказ сохранен и подтверждение отправлено на вашу
+                          электронную почту
+                        </h1>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">...</div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <hr />
+              <h3 className="orderErrMsg"></h3>
+            </>
+          )}
+        </div>
+        <footer>
+          <div>Номер телефона</div>
+          <div>Адрес</div>
+        </footer>
+        <script src="/js/modal.js"></script>
       </body>
     </Layout>
   );

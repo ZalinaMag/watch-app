@@ -41,6 +41,13 @@ module.exports = function Layout({ children, login, title }) {
                     <li className="nav-item">
                       <div className="nav-link">{login}</div>
                     </li>
+                    {login === "admin" && (
+                      <li className="nav-item">
+                        <div className="nav-link users-list">
+                          <button>1124asdaf4</button>
+                        </div>
+                      </li>
+                    )}
                     <li className="nav-item">
                       <a className="nav-link" href="/logout">
                         Logout
