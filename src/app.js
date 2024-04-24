@@ -1,11 +1,13 @@
-require("dotenv").config();
-const express = require("express");
-const morgan = require("morgan");
-const path = require("path");
+require('dotenv').config();
+const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
 
-const session = require("express-session");
-const FileStore = require("session-file-store")(session);
-const { secureRoute, checkUser } = require("./middlewares/common");
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
+const { secureRoute, checkUser } = require('./middlewares/common');
+
+const orderRouter = require('./routes/order.router');
 
 const home = require("./routers/home.rout");
 
@@ -14,7 +16,7 @@ const app = express();
 const { PORT } = process.env;
 
 const sessionConfig = {
-  name: "cookieName",
+  name: 'cookieName',
   store: new FileStore(),
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -25,17 +27,16 @@ const sessionConfig = {
   },
 };
 
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(process.cwd(), "public")));
+app.use(express.static(path.join(process.cwd(), 'public')));
+app.use(express.static(__dirname));
 app.use(session(sessionConfig));
 
 app.use("/home", home);
 
-app.get("/*", (req, res) => {
-  res.redirect("/");
-});
+app.use('/order', orderRouter);
 
 app.listen(PORT, function () {
   console.log(`Server listening at localhost:${this.address().port}`);
