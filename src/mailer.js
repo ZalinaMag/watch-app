@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport(
     },
   },
   {
-    from: "Mailer Test <pokopera@mail.ru>",
+    from: "Custom Watch <pokopera@mail.ru>",
   }
 );
 
