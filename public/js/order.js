@@ -1,18 +1,18 @@
-// const form = document.querySelector('#regForm');
+// const form = document.querySelector("#regForm");
 
-// form.addEventListener('submit', async (e) => {
+// form.addEventListener("submit", async (e) => {
 //   e.preventDefault();
 //   const data = new FormData(form);
 //   const res = Object.fromEntries(data);
 //   if (!res.login || !res.email || !res.password) {
-//     alert('Please provide your data');
+//     alert("Please provide your data");
 //   } else {
 //     console.log(res);
 //     try {
-//       const response = await fetch('/register', {
-//         method: 'POST',
+//       const response = await fetch("/register", {
+//         method: "POST",
 //         headers: {
-//           'Content-Type': 'application/json',
+//           "Content-Type": "application/json",
 //         },
 //         body: JSON.stringify(res),
 //       });
@@ -20,17 +20,17 @@
 //       console.log(result);
 //       if (result.regDone) {
 //         setTimeout(() => {
-//           window.location.href = '/items';
+//           window.location.href = "/items";
 //         }, 200);
 //       }
 //       if (result.err) {
-//         const errMsg = document.querySelector('.regErrMsg');
+//         const errMsg = document.querySelector(".regErrMsg");
 //         errMsg.innerText = result.err;
-//         errMsg.style.color = 'purple';
+//         errMsg.style.color = "purple";
 //       }
 //     } catch (error) {
-//       console.log('ошибочка реги', error);
-//       alert('ошибочка реги');
+//       console.log("ошибочка реги", error);
+//       alert("ошибочка реги");
 //     }
 //   }
 // });

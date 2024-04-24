@@ -29,10 +29,39 @@ body {
   border: 1px solid rgb(8, 8, 8);
 }
 .navbar-brand {
+  position: relative;
   color: rgb(7, 7, 7);
 }
-.navbar-brand:hover {
-  color: rgb(8, 8, 8);
+.navbar-brand::before,
+.navbar-brand::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #3cefff;
+  transform: scaleY(0);
+  transition: transform 0.5s ease;
+}
+
+.navbar-brand::before {
+  left: -8px;
+  transform-origin: center top;
+}
+
+.navbar-brand:hover::before {
+  transform-origin: center bottom;
+  transform: scaleY(1);
+}
+
+.navbar-brand::after {
+  right: -8px;
+  transform-origin: center bottom;
+}
+
+.navbar-brand:hover::after {
+  transform-origin: center top;
+  transform: scaleY(1);
 }
 .carousel {
   display: flex;
@@ -69,4 +98,46 @@ body {
 .details:hover::before {
   transform: scaleX(0);
   transform-origin: bottom right;
+}
+
+.order {
+  z-index: 1;
+  position: relative;
+  font-size: inherit;
+  font-family: inherit;
+  color: rgb(12, 12, 12);
+  padding: 0.5em 1em;
+  outline: none;
+  border: none;
+  background-color: hsl(240, 17%, 98%);
+}
+
+.order:hover {
+  cursor: pointer;
+}
+
+.order::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 4px solid #3cefff;
+  transform-origin: center;
+  transform: scale(1);
+}
+
+.order:hover::before {
+  transition: all 0.75s ease-in-out;
+  transform-origin: center;
+  transform: scale(1.75);
+  opacity: 0;
+}
+
+.makeOrder {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
 }

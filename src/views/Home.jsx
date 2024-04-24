@@ -16,21 +16,21 @@ function Home({ login }) {
               <img
                 src="/css/image/70fcc8f18a57b98ccb7c302921gq--ukrasheniya-derevyannye-naruchnye-chasy-muzhskie-s-gravirovko.jpg"
                 className="d-block w-100"
-                alt="..."
+                alt="img-watch"
               />
             </div>
             <div className="carousel-item">
               <img
                 src="/css/image/a62a88bee46f67de8f791aea8810--ukrasheniya-derevyannye-naruchnye-chasy-muzhskie-s-gravirovko.jpg"
                 className="d-block w-100"
-                alt="..."
+                alt="img-watch"
               />
             </div>
             <div className="carousel-item">
               <img
                 src="/css/image/c55e8b320daa93be3848df427372--ukrasheniya-naruchnye-chasy-iz-dereva-stali-i-mramora-muzhski.jpg"
                 className="d-block w-100"
-                alt="..."
+                alt="img-watch"
               />
             </div>
             <button
@@ -62,6 +62,10 @@ function Home({ login }) {
         <div className="spanDetails">
           <span className="details">More details</span>
         </div>
+        <div className="makeOrder">
+          <button className="order">Make an order</button>
+        </div>
+        {/* <script defer src="js/order.js" /> */}
       </body>
     </Layout>
   );

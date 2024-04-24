@@ -13,9 +13,8 @@ loginRouter.post("/", async (req, res) => {
       const checkPass = await bcrypt.compare(password, user.password);
       if (checkPass) {
         req.session.login = user.login;
-        req.session.save(() => {
-          res.redirect("/");
-        });
+        // res.redirect("/");
+        res.json({});
       } else {
         res.json({ err: "Неверный пароль" });
       }
