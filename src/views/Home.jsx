@@ -6,6 +6,7 @@ function Home({ login, allWatch }) {
   return (
     <Layout login={login}>
       <body>
+
         <div
           id="carouselExampleControls"
           className="carousel slide"

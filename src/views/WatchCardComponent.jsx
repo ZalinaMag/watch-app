@@ -1,6 +1,6 @@
 const React = require('react');
 
-function Card({ watch, login }) {
+function WatchComponentCard({ watch, login }) {
   return (
     <div className='watchCard'>
       <img src={watch.img} />
@@ -19,4 +19,4 @@ function Card({ watch, login }) {
   );
 }
 
-module.exports = Card;
+module.exports = WatchComponentCard;
