@@ -12,7 +12,7 @@ function checkUser(req, res, next) {
     // есть в сессии (есть кука) = ок, иди на главную или куда-то, куда есть доступ
     next();
   } else {
-    res.redirect('/login');
+    res.redirect('/');
   }
 }
 

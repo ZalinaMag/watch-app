@@ -8,7 +8,7 @@ loginRouter.post("/", async (req, res) => {
     const user = await User.findOne({ where: { login } });
     if (!user) {
       console.log("Пользователь не найден");
-      res.redirect("/register");
+      res.json({ err: "Неверный логин" });
     } else {
       const checkPass = await bcrypt.compare(password, user.password);
       if (checkPass) {
