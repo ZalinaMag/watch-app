@@ -13,6 +13,13 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          login: 'Игорь',
+          email: 'borkts@gmail.com',
+          password: '123',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {},
     );
