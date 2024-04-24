@@ -7,6 +7,8 @@ const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 const { secureRoute, checkUser } = require("./middlewares/common");
 
+const home = require("./routers/home.rout");
+
 const app = express();
 
 const { PORT } = process.env;
@@ -28,6 +30,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(process.cwd(), "public")));
 app.use(session(sessionConfig));
+
+app.use("/home", home);
 
 app.get("/*", (req, res) => {
   res.redirect("/");
