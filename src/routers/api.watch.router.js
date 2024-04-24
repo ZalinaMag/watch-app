@@ -1,31 +1,35 @@
-const watchRouter = require("express").Router();
-const { Watch } = require("../../db/models");
+const watchRouter = require('express').Router();
+const { Watch } = require('../../db/models');
+const renderTemplate = require('../utils/renderTemplate');
+const Edit = require('../views/Edit.jsx');
 
-watchRouter.get("/", async (req, res) => {
+watchRouter.get('/', async (req, res) => {
   try {
     const allWatch = await Watch.findAll({ raw: true });
     res.json(allWatch);
   } catch (error) {
     console.log(error);
-    res.json({ err: "Ошибка при обращении к базе данных" });
+    res.json({ err: 'Ошибка при обращении к базе данных' });
   }
 });
 
-watchRouter.get("/:id", async (req, res) => {
+watchRouter.get('/:id', async (req, res) => {
   try {
     const oneWatch = await Watch.findOne({ where: { id: req.params.id } });
     res.json(oneWatch);
   } catch (error) {
     console.log(error);
-    res.json({ err: "Ошибка при обращении к базе данных" });
+    res.json({ err: 'Ошибка при обращении к базе данных' });
   }
 });
 
-watchRouter.post("/", async (req, res) => {
+watchRouter.post('/', async (req, res) => {
   try {
-    const { title, description, gender, color, img } = req.body;
+    const {
+      title, description, gender, color, img,
+    } = req.body;
     if (!title || !gender || !color || !img) {
-      res.json({ err: "Получены не все данные" });
+      res.json({ err: 'Получены не все данные' });
       return;
     }
     await Watch.create({
@@ -38,38 +42,86 @@ watchRouter.post("/", async (req, res) => {
     res.end();
   } catch (error) {
     console.log(error);
-    res.json({ err: "Ошибка при обращении к базе данных" });
+    res.json({ err: 'Ошибка при обращении к базе данных' });
   }
 });
 
-watchRouter.patch("/", async (req, res) => {
+// watchRouter.patch('/', async (req, res) => {
+//   try {
+//     const {
+//       title, description, gender, color, img, id,
+//     } = req.body;
+//     if (!title || !gender || !color || !img) {
+//       res.json({ err: 'Получены не все данные' });
+//     }
+//     const oneWatch = await Watch.findOne({ where: { id } });
+//     oneWatch.update({
+//       title,
+//       description,
+//       gender,
+//       color,
+//       img,
+//     });
+//     res.end();
+//   } catch (error) {
+//     console.log(error);
+//     res.json({ err: 'Ошибка при обращении к базе данных' });
+//   }
+// });
+
+watchRouter.get('/change/:id', async (req, res) => {
   try {
-    const { title, description, gender, color, img, id } = req.body;
-    if (!title || !gender || !color || !img) {
-      res.json({ err: "Получены не все данные" });
+    const { id } = req.params;
+    const { login } = req.session;
+    const watch = await Watch.findOne({ where: { id } });
+
+    if (!watch) {
+      return res.status(404).send('Item not found');
     }
-    const oneWatch = await Watch.findOne({ where: { id } });
-    oneWatch.update({
-      title,
-      description,
-      gender,
-      color,
-      img,
-    });
-    res.end();
+
+    renderTemplate(Edit, { watch, login }, res);
   } catch (error) {
-    console.log(error);
-    res.json({ err: "Ошибка при обращении к базе данных" });
+    res.status(500).send(error.toString());
   }
 });
 
-watchRouter.delete("/", async (req, res) => {
+watchRouter.patch('/change/:id', async (req, res) => {
+  const { id } = req.params;
+  const {
+    title, description, gender, color, img,
+  } = req.body;
+
+  if (!title || !gender || !color || !img) {
+    return res.status(400).json({ error: 'Недостаточно данных' });
+  }
+
   try {
-    await Watch.destroy({ where: { id: req.body.id } });
-    res.end();
+    const watch = await Watch.findOne({ where: { id } });
+    if (!watch) {
+      return res.status(404).send('Часы не найдены');
+    }
+
+    await watch.update({
+      title, description, gender, color, img,
+    });
+    res.json({ success: true });
   } catch (error) {
-    console.log(error);
-    res.json({ err: "Ошибка при обращении к базе данных" });
+    console.error(error);
+    res.status(500).json({ error: 'Ошибка сервера' });
+  }
+});
+
+watchRouter.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletion = await Watch.destroy({ where: { id } });
+    if (!deletion) {
+      return res.status(404).json({ error: 'Часы не найдены' });
+    }
+    res.json({ success: true });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Ошибка при удалении' });
   }
 });
 
