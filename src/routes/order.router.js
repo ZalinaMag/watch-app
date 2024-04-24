@@ -1,7 +1,7 @@
 const orderRouter = require('express').Router();
 const multer = require('multer');
-const { Order, User } = require('../../db/models');
-const renderTemplate = require('../utils/renderTemplate');
+const { Order, User } = require('../../db/models/index.js');
+const renderTemplate = require('../utils/renderTemplate.js');
 const OrderPage = require('../views/OrderPage.jsx');
 
 orderRouter.get('/', (req, res) => {
@@ -9,17 +9,15 @@ orderRouter.get('/', (req, res) => {
 });
 
 const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, './assets/uploads'); // Укажите путь к папке, где будут сохраняться файлы
+  destination(req, file, cb) {
+    cb(null, './public/assets/uploads');
   },
-  filename: function(req, file, cb) {
-    // Сохраняем файл под его оригинальным именем и расширением
+  filename(req, file, cb) {
     cb(null, file.originalname);
-  }
+  },
 });
 
-const upload = multer({ storage: storage })
-// const upload = multer({ dest: '/assets/uploads' });
+const upload = multer({ storage });
 
 // сохранение в БД
 orderRouter.post('/submit', upload.single('image'), async (req, res) => {
