@@ -1,24 +1,26 @@
-const watchContainer = document.querySelector('.watchContainer');
+const watchContainer = document.querySelector(".watchContainer");
 
-watchContainer?.addEventListener('click', async (event) => {
-  if (event.target.classList.contains('delBtn')) {
+watchContainer?.addEventListener("click", async (event) => {
+  if (event.target.classList.contains("delBtn")) {
     const watchId = event.target.id;
     try {
       const response = await fetch(`/${watchId}`, {
-        method: 'DELETE',
+        method: "DELETE",
       });
       const result = await response.json();
       if (result.success) {
         const deletedWatchItem = event.target.parentNode;
         deletedWatchItem.remove();
       } else {
-        console.log('Ошибка при удалении');
+        console.log("Ошибка при удалении");
       }
     } catch (error) {
       console.error(error);
     }
   }
 });
+
+
 
 // change
 // document.addEventListener('DOMContentLoaded', () => {

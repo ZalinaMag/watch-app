@@ -6,7 +6,6 @@ function Home({ login, allWatch }) {
   return (
     <Layout login={login}>
       <body>
-
         <div
           id="carouselExampleControls"
           className="carousel slide"
@@ -61,7 +60,7 @@ function Home({ login, allWatch }) {
           </div>
         </div>
         <div className="spanDetails">
-          <span className="details">More details</span>
+          <button className="details">More details</button>
         </div>
         <div className="makeOrder">
           <button className="order">Make an order</button>
@@ -73,10 +72,12 @@ function Home({ login, allWatch }) {
           <button className="btnColorSilver">dgssgssdg</button>
           {login === "admin" && <button className="addCard">admin</button>}
         </div>
-        <div className="watchContainer">
-          {allWatch.map((watch) => (
-            <Card watch={watch} key={watch.id} login={login} />
-          ))}
+        <div className="contain">
+          <div className="watchContainer">
+            {allWatch.map((watch) => (
+              <Card watch={watch} key={watch.id} login={login} />
+            ))}
+          </div>
         </div>
         <div className="orderPage">
           {login && (
@@ -90,16 +91,11 @@ function Home({ login, allWatch }) {
                 encType="multipart/form-data"
               >
                 <input type="text" name="name" placeholder="имя" required />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="адрес электронной почты"
-                  required
-                />
+                <input type="email" name="email" placeholder="email" required />
                 <input
                   type="text"
                   name="phone"
-                  placeholder="номер телефона"
+                  placeholder="телефон"
                   required
                 />
                 <input
@@ -108,7 +104,13 @@ function Home({ login, allWatch }) {
                   placeholder="комментарии"
                   required
                 />
-                <input type="file" name="image" required />
+
+                <input
+                  id="avatar"
+                  type="file"
+                  name="avatar"
+                  accept="image/png, image/jpeg"
+                />
                 <button
                   type="submit"
                   class="modalBtn btn-primary"
@@ -117,7 +119,6 @@ function Home({ login, allWatch }) {
                 >
                   сделать заказ
                 </button>
-
                 <div
                   class="modal fade"
                   id="exampleModal"
@@ -128,10 +129,6 @@ function Home({ login, allWatch }) {
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">
-                          Заказ сохранен и подтверждение отправлено на вашу
-                          электронную почту
-                        </h1>
                         <button
                           type="button"
                           class="btn-close"
@@ -139,7 +136,10 @@ function Home({ login, allWatch }) {
                           aria-label="Close"
                         ></button>
                       </div>
-                      <div class="modal-body">...</div>
+                      <div class="modal-body">
+                        Заказ сохранен и подтверждение отправлено на вашу
+                        электронную почту
+                      </div>
                       <div class="modal-footer">
                         <button
                           type="button"
@@ -162,7 +162,7 @@ function Home({ login, allWatch }) {
           <div>Номер телефона</div>
           <div>Адрес</div>
         </footer>
-        <script src="/js/modal.js"></script>
+        <script defer src="/js/modal.js"></script>
       </body>
     </Layout>
   );

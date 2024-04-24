@@ -27,11 +27,7 @@ module.exports = function Order() {
         <input type="file" name="image" required />
         <button type="submit">Отправить заказ</button>
       </form>
-      <div id="clockContainer">
-        <div id="hour"></div>
-        <div id="minute"></div>
-        <div id="second"></div>
-      </div>
+
       <hr />
       <h3 className="orderErrMsg"></h3>
       {/* <script defer src="js/order.js" /> */}

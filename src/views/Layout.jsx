@@ -55,6 +55,11 @@ module.exports = function Layout({ children, login, title }) {
                     </li>
                   </ul>
                 </div>
+                <div id="clockContainer">
+                  <div id="hour"></div>
+                  <div id="minute"></div>
+                  <div id="second"></div>
+                </div>
               </div>
             </nav>
           </>
@@ -247,6 +252,7 @@ module.exports = function Layout({ children, login, title }) {
         />
         <script defer src="/js/saveUser.js" />
         <script defer src="/js/saveUserLogin.js" />
+        <script defer src="/js/clock.js" />
       </body>
     </html>
   );
