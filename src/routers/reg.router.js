@@ -15,7 +15,7 @@ regRouter.post("/", async (req, res) => {
       const newUser = await User.create({ login, email, password: hash });
       req.session.login = newUser.login;
       req.session.save(() => {
-        res.end();
+        res.json({});
       });
     }
   } catch (error) {

@@ -6,7 +6,7 @@ module.exports = function Layout({ children, login, title }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="/css/normalize.css" />
+
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
           rel="stylesheet"
@@ -22,9 +22,9 @@ module.exports = function Layout({ children, login, title }) {
           <>
             <nav className="navbar navbar-expand-lg bg-light">
               <div className="container-fluid">
-                <a className="navbar-brand" href="/">
+                <span className="navbar-brand" href="/">
                   Home
-                </a>
+                </span>
                 <button
                   className="navbar-toggler"
                   type="button"
@@ -41,6 +41,13 @@ module.exports = function Layout({ children, login, title }) {
                     <li className="nav-item">
                       <div className="nav-link">{login}</div>
                     </li>
+                    {login === "admin" && (
+                      <li className="nav-item">
+                        <div className="nav-link users-list">
+                          <button>1124asdaf4</button>
+                        </div>
+                      </li>
+                    )}
                     <li className="nav-item">
                       <a className="nav-link" href="/logout">
                         Logout
@@ -73,7 +80,7 @@ module.exports = function Layout({ children, login, title }) {
                   <ul className="navbar-nav">
                     <button
                       type="button"
-                      class="btn btn-primary"
+                      className="btn btn-primary"
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
                     >
@@ -81,66 +88,70 @@ module.exports = function Layout({ children, login, title }) {
                     </button>
 
                     <div
-                      class="modal fade"
+                      className="modal fade"
                       id="exampleModal"
                       tabindex="-1"
                       aria-labelledby="exampleModalLabel"
                       aria-hidden="true"
                     >
-                      <div class="modal-dialog">
-                        <form className="form-login">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h1
-                                class="modal-title fs-5"
-                                id="exampleModalLabel"
-                              >
-                                Authorization
-                              </h1>
-                              <button
-                                type="button"
-                                class="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"
-                              ></button>
-                            </div>
-                            <div class="modal-body">Enter login</div>
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <h1
+                              className="modal-title fs-5"
+                              id="exampleModalLabel"
+                            >
+                              Authorization
+                            </h1>
+                            <button
+                              type="button"
+                              className="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            ></button>
+                          </div>
+
+                          <div className="modal-body">Enter login</div>
+                          <form className="form-login">
                             <input
                               name="login"
                               type="text"
                               className="form-control shadow rounded"
-                              id="exampleInput1"
+                              id="exampleInputLogin1"
                               placeholder="введите логин"
                               required
                             />
-                            <div class="modal-body">Enter password</div>
+                            <div className="modal-body">Enter password</div>
                             <input
                               name="login"
                               type="text"
                               className="form-control shadow rounded"
-                              id="exampleInput1"
+                              id="exampleInputPassword1"
                               placeholder="введите пароль"
                               required
                             />
-                            <div class="modal-footer">
+                            <div className="modal-footer">
                               <button
                                 type="button"
-                                class="btnClose btn-secondary"
+                                className="btnClose btn-secondary"
                                 data-bs-dismiss="modal"
                               >
                                 Close
                               </button>
-                              <button type="button" class="btnSave btn-primary">
+                              <button
+                                type="submit"
+                                className="btnSave btn-primary"
+                              >
                                 Save
                               </button>
                             </div>
-                          </div>
-                        </form>
+                          </form>
+                        </div>
                       </div>
                     </div>
                     <button
                       type="button"
-                      class="btn btn-primary"
+                      className="btn btn-primary"
                       data-bs-toggle="modal"
                       data-bs-target="#staticBackdrop"
                     >
@@ -148,7 +159,7 @@ module.exports = function Layout({ children, login, title }) {
                     </button>
 
                     <div
-                      class="modal fade"
+                      className="modal fade"
                       id="staticBackdrop"
                       data-bs-backdrop="static"
                       data-bs-keyboard="false"
@@ -156,24 +167,24 @@ module.exports = function Layout({ children, login, title }) {
                       aria-labelledby="staticBackdropLabel"
                       aria-hidden="true"
                     >
-                      <div class="modal-dialog">
+                      <div className="modal-dialog">
                         <form className="form-reg">
-                          <div class="modal-content">
-                            <div class="modal-header">
+                          <div className="modal-content">
+                            <div className="modal-header">
                               <h1
-                                class="modal-title fs-5"
+                                className="modal-title fs-5"
                                 id="staticBackdropLabel"
                               >
                                 Registration
                               </h1>
                               <button
                                 type="button"
-                                class="btn-close"
+                                className="btn-close"
                                 data-bs-dismiss="modal"
                                 aria-label="Close"
                               ></button>
                             </div>
-                            <div class="modal-body">Enter login</div>
+                            <div className="modal-body">Enter login</div>
                             <input
                               name="login"
                               type="text"
@@ -182,7 +193,7 @@ module.exports = function Layout({ children, login, title }) {
                               placeholder="введите логин"
                               required
                             />
-                            <div class="modal-body">Enter email</div>
+                            <div className="modal-body">Enter email</div>
                             <input
                               name="email"
                               type="text"
@@ -191,7 +202,7 @@ module.exports = function Layout({ children, login, title }) {
                               placeholder="введите email"
                               required
                             />
-                            <div class="modal-body">Enter password</div>
+                            <div className="modal-body">Enter password</div>
                             <input
                               name="login"
                               type="text"
@@ -201,17 +212,17 @@ module.exports = function Layout({ children, login, title }) {
                               required
                             />
                             <span></span>
-                            <div class="modal-footer">
+                            <div className="modal-footer">
                               <button
                                 type="button"
-                                class="btnCloseReg btn-secondary"
+                                className="btnCloseReg btn-secondary"
                                 data-bs-dismiss="modal"
                               >
                                 Close
                               </button>
                               <button
                                 type="button"
-                                class="btnSaveReg btn-primary"
+                                className="btnSaveReg btn-primary"
                               >
                                 Save
                               </button>
@@ -221,6 +232,11 @@ module.exports = function Layout({ children, login, title }) {
                       </div>
                     </div>
                   </ul>
+                </div>
+                <div id="clockContainer">
+                  <div id="hour"></div>
+                  <div id="minute"></div>
+                  <div id="second"></div>
                 </div>
               </div>
             </nav>
@@ -234,6 +250,9 @@ module.exports = function Layout({ children, login, title }) {
           integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
           crossOrigin="anonymous"
         />
+        <script defer src="/js/saveUser.js" />
+        <script defer src="/js/saveUserLogin.js" />
+        <script defer src="/js/clock.js" />
       </body>
     </html>
   );

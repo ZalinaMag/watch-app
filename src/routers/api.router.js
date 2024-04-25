@@ -1,11 +1,9 @@
-const apiRouter = require("express").Router();
+const apiRouter = require('express').Router();
 
-const mailRouter = require("./api.mail.router");
-const userRouter = require("./api.user.router");
-const watchRouter = require("./api.watch.router");
+const userRouter = require('./api.user.router');
+const watchRouter = require('./api.watch.router');
 
-apiRouter.use("/user", userRouter);
-apiRouter.use("/watch", watchRouter);
-apiRouter.use("/mail", mailRouter)
+apiRouter.use('/user', userRouter);
+apiRouter.use('/watch', watchRouter);
 
 module.exports = apiRouter;
