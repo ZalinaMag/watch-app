@@ -74,23 +74,51 @@ function Home({ login, allWatch }) {
         <div className="makeOrder">
           <button className="order">Сделать заказ</button>
         </div>
-        <div className="filterContain">
-        <button className="btnGenderMan">мужские</button>
-          <button className="btnGenderWom">женские</button>
-          <button className="btnColorGold">золотые</button>
-          <button className="btnColorSilver">серебряные</button>
-          {login === "admin" && (
-            <div className='addNewCard'>
-              <h3>Добавление новой модели</h3>
-            <form className='addWatchForm' encType="multipart/form-data">
-              <input type="file" name="image" required />
-              <input type="text" name="title" placeholder="название" required />
-              <input type="text" name="description" placeholder="описание" required />
-              <input type="text" name="gender" placeholder="мужские/женские" required />
-              <input type="text" name="color" placeholder="цвет" required />
-              <button type='submit'>Добавить новую модель</button>
-            </form>
+        <div className="filterContainMain">
+          <div className="filterContain">
+            <button className="btnGenderMan">мужские</button>
+            <button className="btnGenderWom">женские</button>
+            <button className="btnColorGold">золотые</button>
+            <button className="btnColorSilver">серебряные</button>
           </div>
+          {login === "admin" && (
+            <div className="addNewCard">
+              <h3>Добавление новой модели</h3>
+              <form className="addWatchForm" encType="multipart/form-data">
+                <input type="file" name="image" className="addFile" required />
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="название"
+                  className="addFile"
+                  required
+                />
+                <input
+                  type="text"
+                  name="description"
+                  placeholder="описание"
+                  className="addFile"
+                  required
+                />
+                <input
+                  type="text"
+                  name="gender"
+                  placeholder="мужские/женские"
+                  className="addFile"
+                  required
+                />
+                <input
+                  type="text"
+                  name="color"
+                  placeholder="цвет"
+                  className="addFile"
+                  required
+                />
+                <button type="submit" className="addNewFile">
+                  Добавить новую модель
+                </button>
+              </form>
+            </div>
           )}
         </div>
         <div className="contain">
@@ -143,7 +171,7 @@ function Home({ login, allWatch }) {
                 <div
                   className="modal fade"
                   id="exampleModal"
-                  tabindex="-1"
+                  tabIndex="-1"
                   aria-labelledby="exampleModalLabel"
                   aria-hidden="true"
                 >
@@ -188,6 +216,7 @@ function Home({ login, allWatch }) {
         </footer>
         <script defer src="/js/modal.js"></script>
         <script defer src="/js/watchCard.js" />
+        <script defer src="/js/scrool.js" />
       </body>
     </Layout>
   );

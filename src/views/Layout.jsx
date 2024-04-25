@@ -90,7 +90,7 @@ module.exports = function Layout({ children, login, title }) {
                     <div
                       className="modal fade"
                       id="exampleModal"
-                      tabindex="-1"
+                      tabIndex="-1"
                       aria-labelledby="exampleModalLabel"
                       aria-hidden="true"
                     >
@@ -163,7 +163,7 @@ module.exports = function Layout({ children, login, title }) {
                       id="staticBackdrop"
                       data-bs-backdrop="static"
                       data-bs-keyboard="false"
-                      tabindex="-1"
+                      tabIndex="-1"
                       aria-labelledby="staticBackdropLabel"
                       aria-hidden="true"
                     >
@@ -254,7 +254,10 @@ module.exports = function Layout({ children, login, title }) {
         <script defer src="/js/saveUserLogin.js" />
         <script defer src="/js/clock.js" />
         <script src="js/csvload.js"></script>
-        <script defer src="https://www.papaparse.com/resources/js/papaparse.js"></script>
+        <script
+          defer
+          src="https://www.papaparse.com/resources/js/papaparse.js"
+        ></script>
       </body>
     </html>
   );
