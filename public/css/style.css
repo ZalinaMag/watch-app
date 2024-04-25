@@ -194,6 +194,7 @@ h2,
   justify-content: space-evenly;
 }
 
+.addNewFile,
 .delBtn,
 .changeBtn {
   padding: 5px 30px;
@@ -210,6 +211,7 @@ h2,
   font-weight: 500;
 }
 
+.addNewFile:hover,
 .delBtn:hover,
 .changeBtn:hover {
   color: #da1616;
@@ -410,4 +412,41 @@ input::file-selector-button {
 .details {
   font-weight: 500;
   border: 1px solid white;
+}
+
+.addNewCard {
+  margin-top: 100px;
+  display: grid;
+  justify-content: center;
+}
+
+.addWatchForm {
+  display: grid;
+  justify-content: center;
+}
+
+.addFile {
+  margin-bottom: 10px;
+}
+
+.watchCard {
+  position: relative;
+}
+
+.watchCard {
+  border: 25px solid #fafafa;
+  border-top-width: 35px;
+  border-bottom-width: 100px;
+  -webkit-box-shadow: 3px 3px 6px 4px #888;
+  -moz-box-shadow: 3px 3px 6px 4px #888;
+  box-shadow: 3px 3px 6px 4px #888;
+}
+
+.img {
+  filter: grayscale(1);
+  transition: 1s;
+}
+
+.img:hover {
+  filter: grayscale(0);
 }
