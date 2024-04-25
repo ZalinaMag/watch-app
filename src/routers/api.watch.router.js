@@ -1,10 +1,11 @@
 const watchRouter = require('express').Router();
+const fs = require('fs').promises;
+const path = require('path');
 const multer = require('multer');
 const storage = require('../../multer');
 const { Watch } = require('../../db/models');
 const renderTemplate = require('../utils/renderTemplate');
 const Edit = require('../views/Edit.jsx');
-const NewCard = require('../views/NewCard.jsx');
 
 watchRouter.get('/', async (req, res) => {
   try {
@@ -116,13 +117,21 @@ watchRouter.patch('/change/:id', async (req, res) => {
   }
 });
 
+
+// delete
 watchRouter.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const deletion = await Watch.destroy({ where: { id } });
-    if (!deletion) {
+    const watch = await Watch.findByPk(id);
+    if (!watch) {
       return res.status(404).json({ err: 'Часы не найдены' });
     }
+
+    const filePath = path.join(__dirname, '../../public', watch.img);
+
+    await fs.unlink(filePath);
+
+    await watch.destroy();
     res.json({ success: true });
   } catch (error) {
     console.error(error);
