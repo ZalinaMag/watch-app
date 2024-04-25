@@ -14,21 +14,28 @@ function Home({ login, allWatch }) {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img
-                src="/css/image/70fcc8f18a57b98ccb7c302921gq--ukrasheniya-derevyannye-naruchnye-chasy-muzhskie-s-gravirovko.jpg"
+                src="/css/image/duotone (1).png"
                 className="d-block w-100"
                 alt="img-watch"
               />
             </div>
             <div className="carousel-item">
               <img
-                src="/css/image/a62a88bee46f67de8f791aea8810--ukrasheniya-derevyannye-naruchnye-chasy-muzhskie-s-gravirovko.jpg"
+                src="/css/image/duotone (3).png"
                 className="d-block w-100"
                 alt="img-watch"
               />
             </div>
             <div className="carousel-item">
               <img
-                src="/css/image/c55e8b320daa93be3848df427372--ukrasheniya-naruchnye-chasy-iz-dereva-stali-i-mramora-muzhski.jpg"
+                src="/css/image/duotone (4).png"
+                className="d-block w-100"
+                alt="img-watch"
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                src="/css/image/duotone (6).png"
                 className="d-block w-100"
                 alt="img-watch"
               />
@@ -60,16 +67,18 @@ function Home({ login, allWatch }) {
           </div>
         </div>
         <div className="spanDetails">
-          <button className="details">More details</button>
+          <button className="details">
+            <span id="span">Подробнее о наших товарах</span>
+          </button>
         </div>
         <div className="makeOrder">
-          <button className="order">Make an order</button>
+          <button className="order">Сделать заказ</button>
         </div>
         <div className="filterContain">
-          <button className="btnGenderMan">asfaf</button>
-          <button className="btnGenderWom">asfasf</button>
-          <button className="btnColorGold">asfasf</button>
-          <button className="btnColorSilver">dgssgssdg</button>
+        <button className="btnGenderMan">мужские</button>
+          <button className="btnGenderWom">женские</button>
+          <button className="btnColorGold">золотые</button>
+          <button className="btnColorSilver">серебряные</button>
           {login === "admin" && (
             <div className='addNewCard'>
               <h3>Добавление новой модели</h3>
@@ -125,37 +134,37 @@ function Home({ login, allWatch }) {
                 />
                 <button
                   type="submit"
-                  class="modalBtn btn-primary"
+                  className="modalBtn btn-primary"
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
                 >
                   сделать заказ
                 </button>
                 <div
-                  class="modal fade"
+                  className="modal fade"
                   id="exampleModal"
                   tabindex="-1"
                   aria-labelledby="exampleModalLabel"
                   aria-hidden="true"
                 >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
+                  <div className="modal-dialog">
+                    <div className="modal-content">
+                      <div className="modal-header">
                         <button
                           type="button"
-                          class="btn-close"
+                          className="btn-close"
                           data-bs-dismiss="modal"
                           aria-label="Close"
                         ></button>
                       </div>
-                      <div class="modal-body">
+                      <div className="modal-body">
                         Заказ сохранен и подтверждение отправлено на вашу
                         электронную почту
                       </div>
-                      <div class="modal-footer">
+                      <div className="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-secondary"
+                          className="btn btn-secondary"
                           data-bs-dismiss="modal"
                         >
                           Close
@@ -171,11 +180,14 @@ function Home({ login, allWatch }) {
           )}
         </div>
         <footer>
-          <div>Номер телефона</div>
+          <div>Номер телефона: 8920000000</div>
+          <div>
+            Telegram: <a href="https://t.me/agvento-test">Написать автору</a>
+          </div>
           <div>Адрес</div>
         </footer>
-        <script defer src="/js/modal.js"></script>        
-      <script defer src='/js/watchCard.js' />
+        <script defer src="/js/modal.js"></script>
+        <script defer src="/js/watchCard.js" />
       </body>
     </Layout>
   );

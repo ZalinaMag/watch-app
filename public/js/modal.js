@@ -53,3 +53,34 @@ orderButton.addEventListener('click', () => {
     smoothScrollTo(headerPosition);
   }
 });
+
+function smoothScroll(targetY, duration = 500) {
+  const start = window.scrollY;
+  const distance = targetY - start;
+  let startTime = null;
+
+  function animation(currentTime) {
+    if (!startTime) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const progress = Math.min(timeElapsed / duration, 1);
+
+    const currentScroll = start + distance * progress;
+    window.scrollTo(0, currentScroll);
+
+    if (progress < 1) {
+      requestAnimationFrame(animation);
+    }
+  }
+
+  requestAnimationFrame(animation);
+}
+
+const orderBtn = document.querySelector(".details");
+const orderHead = document.querySelector(".img");
+
+orderBtn.addEventListener("click", () => {
+  if (orderHead) {
+    const headPosition = orderBtn.getBoundingClientRect().top + window.scrollY;
+    smoothScroll(headPosition);
+  }
+});
