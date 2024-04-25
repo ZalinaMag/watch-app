@@ -70,6 +70,7 @@ body {
 
 .carousel-inner {
   width: 80% !important;
+  border-radius: 10px;
 }
 
 .spanDetails {
@@ -431,6 +432,7 @@ input::file-selector-button {
 
 .watchCard {
   position: relative;
+  border-radius: 10px;
 }
 
 .watchCard {
