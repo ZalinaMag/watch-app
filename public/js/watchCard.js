@@ -1,28 +1,28 @@
-const watchContainer = document.querySelector('.watchContainer');
+if (document.querySelector(".watchContainer")) {
+  const watchContainer = document.querySelector('.watchContainer');
 const addWatchForm = document.querySelector('.addWatchForm');
 const login = document.querySelector('#exampleInputLogin1').value;
 
-watchContainer?.addEventListener('click', async (event) => {
-  if (event.target.classList.contains('delBtn')) {
-    const watchId = event.target.id;
-    try {
-      const response = await fetch(`/${watchId}`, {
-        method: 'DELETE',
-      });
-      const result = await response.json();
-      if (result.success) {
-        const deletedWatchItem = event.target.parentNode;
-        deletedWatchItem.remove();
-      } else {
-        console.log('Ошибка при удалении');
+  watchContainer.addEventListener('click', async (event) => {
+    if (event.target.classList.contains('delBtn')) {
+      const watchId = event.target.id;
+      try {
+        const response = await fetch(`/api/watch/${watchId}`, {
+          method: 'DELETE',
+        });
+        const result = await response.json();
+        if (result.success) {
+          const deletedWatchItem = event.target.parentNode.parentNode;
+          deletedWatchItem.remove();
+        } else {
+          console.log('Ошибка при удалении');
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
     }
-  }
-});
-
-// add
+  });
+}// add
 addWatchForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   const formData = new FormData(addWatchForm);

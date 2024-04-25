@@ -174,7 +174,8 @@ function Home({ login, allWatch }) {
           <div>Номер телефона</div>
           <div>Адрес</div>
         </footer>
-        <script defer src="/js/modal.js"></script>
+        <script defer src="/js/modal.js"></script>        
+      <script defer src='/js/watchCard.js' />
       </body>
     </Layout>
   );

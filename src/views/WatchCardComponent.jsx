@@ -7,14 +7,11 @@ function WatchComponentCard({ watch, login }) {
       <p>{watch.title}</p>
       <p>{watch.description}</p>
       {login === 'admin' && (
-        <>
+        <div className='admin-buttons'>
           <button id={watch.id} className='delBtn' type='button'>Удалить</button>
-          <a href={`/change/${watch.id}`}>
-            <button id={watch.id} className='changeBtn' type='button'>Отредактировать</button>
-          </a>
-        </>
+          <button id={watch.id} className='changeBtn' type='button'>Отредактировать</button>
+        </div>
       )}
-      {/* <script defer src='/watchCard.js' /> */}
     </div>
   );
 }
