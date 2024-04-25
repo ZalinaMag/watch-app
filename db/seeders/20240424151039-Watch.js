@@ -9,7 +9,7 @@ module.exports = {
         {
           img: "assets/uploads/20.jpg",
           title: "Командирские",
-          description: "Дизанейрские часы цвета дерева и моря",
+          description: "Дизайнерские часы цвета дерева и моря",
           gender: "мужские",
           color: "серебристый",
           createdAt: new Date(),

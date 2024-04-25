@@ -75,7 +75,7 @@ function Home({ login, allWatch }) {
           <button className="order">Сделать заказ</button>
         </div>
         <div className="filterContain">
-        <button className="btnGenderMan">мужские</button>
+        <button type='button' className="btnGenderMan">мужские</button>
           <button className="btnGenderWom">женские</button>
           <button className="btnColorGold">золотые</button>
           <button className="btnColorSilver">серебряные</button>
@@ -143,7 +143,7 @@ function Home({ login, allWatch }) {
                 <div
                   className="modal fade"
                   id="exampleModal"
-                  tabindex="-1"
+                  tabIndex="-1"
                   aria-labelledby="exampleModalLabel"
                   aria-hidden="true"
                 >
@@ -188,6 +188,7 @@ function Home({ login, allWatch }) {
         </footer>
         <script defer src="/js/modal.js"></script>
         <script defer src="/js/watchCard.js" />
+        <script defer src="/js/filter.js" />
       </body>
     </Layout>
   );
