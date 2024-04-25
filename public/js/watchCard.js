@@ -21,20 +21,23 @@ if (document.querySelector(".watchContainer")) {
     }
     if (event.target.classList.contains("changeBtn")) {
       const changeBtn = document.querySelector(".changeBtn");
-
+      
+      changeBtn.style.display = 'none';
       const watchId = event.target.id;
 
       if (!document.querySelector(".editWatchForm")) {
+        const response = await fetch(`/api/watch/${watchId}`)
+        const getWatch = await response.json();
 
         const createForm = document.createElement("div");
         createForm.className = "form-edit";
         createForm.innerHTML = `
         <form class='editWatchForm' id=${watchId}>
-            <input type="text" name="title" defaultValue={watch.name} required placeholder="title"/>
-            <input type="text" name="description" defaultValue={watch.description} required placeholder="description"/>
-            <input type="text" name="gender" defaultValue={watch.gender} required placeholder="gender"/>
-            <input type="text" name="color" defaultValue={watch.color} required placeholder="color"/>
-            <button type='submit'>Отредактировать</button>
+            <input type="text" name="title" value=${getWatch.title} required placeholder="title"/>
+            <input type="text" name="description" value=${getWatch.description} required placeholder="description"/>
+            <input type="text" name="gender" value=${getWatch.gender} required placeholder="gender"/>
+            <input type="text" name="color" value=${getWatch.color} required placeholder="color"/>
+            <button type='submit'>Подтвердить</button>
               </form>
         `;
         event.target.parentNode.parentNode.append(createForm);
