@@ -243,6 +243,9 @@ module.exports = function Layout({ children, login, title }) {
           </>
         )}
       </header>
+      <div className="head">
+        <span class="text">Handmade watches</span>
+      </div>
       <body>
         {children}
         <script
