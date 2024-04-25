@@ -70,7 +70,19 @@ function Home({ login, allWatch }) {
           <button className="btnGenderWom">asfasf</button>
           <button className="btnColorGold">asfasf</button>
           <button className="btnColorSilver">dgssgssdg</button>
-          {login === "admin" && <button className="addCard">admin</button>}
+          {login === "admin" && (
+            <div className='addNewCard'>
+              <h3>Добавление новой модели</h3>
+            <form className='addWatchForm' encType="multipart/form-data">
+              <input type="file" name="image" required />
+              <input type="text" name="title" placeholder="название" required />
+              <input type="text" name="description" placeholder="описание" required />
+              <input type="text" name="gender" placeholder="мужские/женские" required />
+              <input type="text" name="color" placeholder="цвет" required />
+              <button type='submit'>Добавить новую модель</button>
+            </form>
+          </div>
+          )}
         </div>
         <div className="contain">
           <div className="watchContainer">

@@ -1,13 +1,13 @@
-const modalBtn = document.querySelector(".modalBtn");
+const modalBtn = document.querySelector('.modalBtn');
 
-modalBtn.addEventListener("click", async () => {
-  const orderForm = document.querySelector(".orderForm");
+modalBtn.addEventListener('click', async () => {
+  const orderForm = document.querySelector('.orderForm');
   const formData = new FormData(orderForm);
   const inputs = Object.fromEntries(formData);
 
-  const res = await fetch("/order/submit", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
+  const res = await fetch('/order/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(inputs),
   });
 
@@ -46,13 +46,12 @@ function smoothScrollTo(targetY, duration = 500) {
   requestAnimationFrame(animation);
 }
 
-const orderButton = document.querySelector(".order");
-const orderHeader = document.querySelector(".orderPage h2");
+const orderButton = document.querySelector('.order');
+const orderHeader = document.querySelector('.orderPage h2');
 
-orderButton.addEventListener("click", () => {
+orderButton.addEventListener('click', () => {
   if (orderHeader) {
-    const headerPosition =
-      orderHeader.getBoundingClientRect().top + window.scrollY;
+    const headerPosition = orderHeader.getBoundingClientRect().top + window.scrollY;
     smoothScrollTo(headerPosition);
   }
 });

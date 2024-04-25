@@ -1,7 +1,10 @@
 const watchRouter = require('express').Router();
+const multer = require('multer');
+const storage = require('../../multer');
 const { Watch } = require('../../db/models');
 const renderTemplate = require('../utils/renderTemplate');
 const Edit = require('../views/Edit.jsx');
+const NewCard = require('../views/NewCard.jsx');
 
 watchRouter.get('/', async (req, res) => {
   try {
@@ -23,26 +26,29 @@ watchRouter.get('/:id', async (req, res) => {
   }
 });
 
-watchRouter.post('/', async (req, res) => {
+// add new
+const upload = multer({ storage });
+
+watchRouter.post('/', upload.single('image'), async (req, res) => {
   try {
     const {
-      title, description, gender, color, img,
+      title, description, gender, color,
     } = req.body;
-    if (!title || !gender || !color || !img) {
-      res.json({ err: 'Получены не все данные' });
-      return;
+    console.log('heeeeereee', req.body);
+    if (!title || !description || !gender || !color || !req.file) {
+      res.status(400).json({ err: 'Получены не все данные' });
     }
-    await Watch.create({
+    const newWatch = await Watch.create({
       title,
       description,
       gender,
       color,
-      img,
+      img: req.file.path,
     });
-    res.end();
+    res.json(newWatch);
   } catch (error) {
     console.log(error);
-    res.json({ err: 'Ошибка при обращении к базе данных' });
+    res.status(500).json({ err: 'Ошибка при обращении к базе данных' });
   }
 });
 
@@ -92,7 +98,7 @@ watchRouter.patch('/change/:id', async (req, res) => {
   } = req.body;
 
   if (!title || !gender || !color || !img) {
-    return res.status(400).json({ error: 'Недостаточно данных' });
+    return res.status(400).json({ err: 'Недостаточно данных' });
   }
 
   try {
@@ -107,7 +113,7 @@ watchRouter.patch('/change/:id', async (req, res) => {
     res.json({ success: true });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Ошибка сервера' });
+    res.status(500).json({ err: 'Ошибка сервера' });
   }
 });
 
@@ -116,12 +122,12 @@ watchRouter.delete('/:id', async (req, res) => {
     const { id } = req.params;
     const deletion = await Watch.destroy({ where: { id } });
     if (!deletion) {
-      return res.status(404).json({ error: 'Часы не найдены' });
+      return res.status(404).json({ err: 'Часы не найдены' });
     }
     res.json({ success: true });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Ошибка при удалении' });
+    res.status(500).json({ err: 'Ошибка при удалении' });
   }
 });
 

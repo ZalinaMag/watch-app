@@ -43,7 +43,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          img: "assets/uploads/24.jpg",
+          img: "assets/uploads/25.jpg",
           title: "Вечная классика",
           description: "Элегантные часы для классического образа",
           gender: "мужские",
@@ -52,7 +52,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          img: "assets/uploads/25.jpg",
+          img: "assets/uploads/28.jpg",
           title: "Нежность",
           description: "Стильные элегантные часы для утонченных женщин",
           gender: "женские",
@@ -61,16 +61,16 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          img: "assets/uploads/28.jpg",
+          img: "assets/uploads/29.jpg",
           title: "Бизнесмен",
-          description: "Классика для деловоых мужчин",
+          description: "Классика для деловых мужчин",
           gender: "мужские",
           color: "серебристый",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          img: "assets/uploads/29.jpg",
+          img: "assets/uploads/24.jpg",
           title: "Лесные",
           description: "Утонченные часы для элегантного образа",
           gender: "man",

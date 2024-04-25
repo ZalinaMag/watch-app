@@ -1,14 +1,15 @@
-const express = require("express");
+const express = require('express');
+
 const route = express.Router();
-const { Watch, User } = require("../../db/models");
+const { Watch, User } = require('../../db/models');
 
-const renderTemplate = require("../utils/renderTemplate");
-const Home = require("../views/Home");
+const renderTemplate = require('../utils/renderTemplate');
+const Home = require('../views/Home.jsx');
 
-route.get("/", async (req, res) => {
+route.get('/', async (req, res) => {
   const { login } = req.session;
   const allWatch = await Watch.findAll({ raw: true });
-  console.log(allWatch);
+  //console.log(allWatch);
 
   renderTemplate(Home, { login, allWatch }, res);
 });
