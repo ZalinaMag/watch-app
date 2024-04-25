@@ -1,7 +1,3 @@
-body {
-  background-color: rgb(255, 253, 253);
-}
-
 .bg-light {
   background-color: rgb(252, 249, 249) !important;
 }
@@ -69,7 +65,7 @@ body {
 }
 
 .carousel-inner {
-  width: 50% !important;
+  width: 60% !important;
 }
 
 .spanDetails {
@@ -166,21 +162,27 @@ body {
   opacity: 0.8;
 }
 
-.contain {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 p {
   display: flex;
   justify-content: center;
 }
 
+.btnAdminDiv,
 h2,
 .orderForm {
   display: flex;
   justify-content: center;
+}
+
+.btnAdminDiv {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 30px;
+}
+
+.delBtn,
+.changeBtn {
+  
 }
 
 h2 {
@@ -278,3 +280,13 @@ input::file-selector-button {
   border: 1px soldid white;
   color: white;
 }
+
+.watchContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+
