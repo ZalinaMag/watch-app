@@ -9,7 +9,14 @@ const Edit = require('../views/Edit.jsx');
 
 watchRouter.get('/', async (req, res) => {
   try {
-    const allWatch = await Watch.findAll({ raw: true });
+    const { gender, color } = req.query;
+    const queryOptions = { where: {} };
+
+    if (gender) queryOptions.where.gender = gender;
+    if (color) queryOptions.where.color = color;
+console.log('seeee', queryOptions);
+console.log('heee', req.query);
+    const allWatch = await Watch.findAll(queryOptions);
     res.json(allWatch);
   } catch (error) {
     console.log(error);

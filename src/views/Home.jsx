@@ -172,6 +172,7 @@ function Home({ login, allWatch }) {
                   className="modal fade"
                   id="exampleModal"
                   tabIndex="-1"
+                  tabIndex="-1"
                   aria-labelledby="exampleModalLabel"
                   aria-hidden="true"
                 >
@@ -216,6 +217,7 @@ function Home({ login, allWatch }) {
         </footer>
         <script defer src="/js/modal.js"></script>
         <script defer src="/js/watchCard.js" />
+        <script defer src="/js/filter.js" />
         <script defer src="/js/scrool.js" />
       </body>
     </Layout>
