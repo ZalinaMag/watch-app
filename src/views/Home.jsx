@@ -172,7 +172,6 @@ function Home({ login, allWatch }) {
                   className="modal fade"
                   id="exampleModal"
                   tabIndex="-1"
-                  tabIndex="-1"
                   aria-labelledby="exampleModalLabel"
                   aria-hidden="true"
                 >
