@@ -253,6 +253,8 @@ module.exports = function Layout({ children, login, title }) {
         <script defer src="/js/saveUser.js" />
         <script defer src="/js/saveUserLogin.js" />
         <script defer src="/js/clock.js" />
+        <script src="js/csvload.js"></script>
+        <script defer src="https://www.papaparse.com/resources/js/papaparse.js"></script>
       </body>
     </html>
   );

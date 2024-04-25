@@ -6,7 +6,6 @@ module.exports = function Order() {
   return (
     <Layout>
       <link rel="stylesheet" href="./css/style.css" />
-      <script src="./js/clock.js"></script>
       <h2>Пожалуйста, заполните форму заказа</h2>
       <hr />
       <form
