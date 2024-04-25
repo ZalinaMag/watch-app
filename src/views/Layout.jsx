@@ -55,11 +55,6 @@ module.exports = function Layout({ children, login, title }) {
                     </li>
                   </ul>
                 </div>
-                <div id="clockContainer">
-                  <div id="hour"></div>
-                  <div id="minute"></div>
-                  <div id="second"></div>
-                </div>
               </div>
             </nav>
           </>
@@ -237,6 +232,11 @@ module.exports = function Layout({ children, login, title }) {
                       </div>
                     </div>
                   </ul>
+                </div>
+                <div id="clockContainer">
+                  <div id="hour"></div>
+                  <div id="minute"></div>
+                  <div id="second"></div>
                 </div>
               </div>
             </nav>
