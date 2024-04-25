@@ -94,10 +94,10 @@ watchRouter.get('/change/:id', async (req, res) => {
 watchRouter.patch('/change/:id', async (req, res) => {
   const { id } = req.params;
   const {
-    title, description, gender, color, img,
+    title, description, gender, color, 
   } = req.body;
 
-  if (!title || !gender || !color || !img) {
+  if (!title || !gender || !color) {
     return res.status(400).json({ err: 'Недостаточно данных' });
   }
 
@@ -108,7 +108,7 @@ watchRouter.patch('/change/:id', async (req, res) => {
     }
 
     await watch.update({
-      title, description, gender, color, img,
+      title, description, gender, color,
     });
     res.json({ success: true });
   } catch (error) {
