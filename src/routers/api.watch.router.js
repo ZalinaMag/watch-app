@@ -34,7 +34,6 @@ watchRouter.post('/', upload.single('image'), async (req, res) => {
     const {
       title, description, gender, color,
     } = req.body;
-    console.log('heeeeereee', req.body);
     if (!title || !description || !gender || !color || !req.file) {
       res.status(400).json({ err: 'Получены не все данные' });
     }
@@ -43,7 +42,7 @@ watchRouter.post('/', upload.single('image'), async (req, res) => {
       description,
       gender,
       color,
-      img: req.file.path,
+      img: `assets/uploads/${req.file.originalname}`,
     });
     res.json(newWatch);
   } catch (error) {

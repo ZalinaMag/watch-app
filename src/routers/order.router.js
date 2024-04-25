@@ -5,6 +5,7 @@ const { Order, User } = require('../../db/models');
 const renderTemplate = require('../utils/renderTemplate');
 const OrderPage = require('../views/OrderPage.jsx');
 const mailer = require('../mailer');
+const path = require('path');
 
 orderRouter.get('/', (req, res) => {
   renderTemplate(OrderPage, {}, res);
@@ -17,6 +18,7 @@ orderRouter.post('/submit', upload.single('image'), async (req, res) => {
   const {
     name, email, phone, comment,
   } = req.body;
+  // console.log('order', req.file.path);
   try {
     const user = await User.findOne({ where: { email } });
     if (!user) {
@@ -28,7 +30,7 @@ orderRouter.post('/submit', upload.single('image'), async (req, res) => {
       userId: user.id,
       phone,
       details: comment,
-      img: req.file.path,
+      img: `assets/uploads/${req.file.originalname}`,
     });
     const message = {
       to: email,

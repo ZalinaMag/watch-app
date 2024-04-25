@@ -1,7 +1,5 @@
-if (document.querySelector(".watchContainer")) {
+if (document.querySelector('.watchContainer')) {
   const watchContainer = document.querySelector('.watchContainer');
-const addWatchForm = document.querySelector('.addWatchForm');
-const login = document.querySelector('#exampleInputLogin1').value;
 
   watchContainer.addEventListener('click', async (event) => {
     if (event.target.classList.contains('delBtn')) {
@@ -22,41 +20,46 @@ const login = document.querySelector('#exampleInputLogin1').value;
       }
     }
   });
-}// add
+}
+
+// add
+
+const watchContainer = document.querySelector('.watchContainer');
+const addWatchForm = document.querySelector('.addWatchForm');
 addWatchForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   const formData = new FormData(addWatchForm);
-console.log(formData);
+  console.log(formData);
   try {
-    const response = await fetch('/', {
+    const response = await fetch('/api/watch', {
       method: 'POST',
       body: formData,
     });
 
-    const result = await response.json();
+    // await response.json();
+    window.location.href = '/';
 
-    if (result) {
-      const watchCard = document.createElement('div');
-      watchCard.className = 'watchCard';
+    // if (result) {
+    //   const watchCard = document.createElement('div');
+    //   watchCard.className = 'watchCard';
 
-      // const adminControls = login === 'admin' ? `
-      //   <button id=${result.id} className='delBtn' type='button'>Удалить</button>
-      //   <button id=${result.id} className='changeBtn' type='button'>Отредактировать</button>
-      // ` : '';
-      // ${adminControls}
+    //   const adminControls = login === 'admin' ? `
+    //     <button id=${result.id} class='delBtn' type='button'>Удалить</button>
+    //     <button id=${result.id} class='changeBtn' type='button'>Отредактировать</button>
+    //   ` : '';
 
-      watchCard.innerHTML = ` 
-      <img src=${result.img} />
-      <p>${result.title}</p>
-      <p>${result.description}</p>
-      <div className="admin"></div>
-      `;
-      watchContainer.append(watchCard);
-    }
+    //   watchCard.innerHTML = ` 
+    //   <img src=${result.img} />
+    //   <p>${result.title}</p>
+    //   <p>${result.description}</p>
+    //   <div class="admin">${adminControls}</div>
+    //   `;
+    //   watchContainer.append(watchCard);
+    // }
 
-    addWatchForm.querySelectorAll('input').forEach((input) => {
-      input.value = '';
-    });
+    // addWatchForm.querySelectorAll('input').forEach((input) => {
+    //   input.value = '';
+    // });
   } catch (error) {
     console.log(error);
   }

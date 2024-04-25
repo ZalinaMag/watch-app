@@ -120,7 +120,7 @@ function Home({ login, allWatch }) {
                 <input
                   id="avatar"
                   type="file"
-                  name="avatar"
+                  name="image"
                   accept="image/png, image/jpeg"
                 />
                 <button
