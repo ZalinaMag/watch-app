@@ -70,6 +70,7 @@ body {
 
 .carousel-inner {
   width: 80% !important;
+  border-radius: 10%;
 }
 
 .spanDetails {
@@ -332,9 +333,9 @@ input::file-selector-button {
 }
 
 .img {
-  max-width: 400px;
-
-  max-height: 400px;
+  width: 400px;
+  object-fit: scale-down;
+  height: 400px;
 }
 
 .carousel-control-prev-icon,
