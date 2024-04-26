@@ -1,19 +1,19 @@
-if (document.querySelector('.watchContainer')) {
-  const watchContainer = document.querySelector('.watchContainer');
+if (document.querySelector(".watchContainer")) {
+  const watchContainer = document.querySelector(".watchContainer");
 
-  watchContainer.addEventListener('click', async (event) => {
-    if (event.target.classList.contains('delBtn')) {
+  watchContainer.addEventListener("click", async (event) => {
+    if (event.target.classList.contains("delBtn")) {
       const watchId = event.target.id;
       try {
         const response = await fetch(`/api/watch/${watchId}`, {
-          method: 'DELETE',
+          method: "DELETE",
         });
         const result = await response.json();
         if (result.success) {
           const deletedWatchItem = event.target.parentNode.parentNode;
           deletedWatchItem.remove();
         } else {
-          console.log('Ошибка при удалении');
+          console.log("Ошибка при удалении");
         }
       } catch (error) {
         console.error(error);
@@ -21,28 +21,28 @@ if (document.querySelector('.watchContainer')) {
     }
     if (event.target.classList.contains("changeBtn")) {
       const changeBtn = document.querySelector(".changeBtn");
-      
-      changeBtn.style.display = 'none';
+
+      changeBtn.style.display = "none";
       const watchId = event.target.id;
 
       if (!document.querySelector(".editWatchForm")) {
-        const response = await fetch(`/api/watch/${watchId}`)
+        const response = await fetch(`/api/watch/${watchId}`);
         const getWatch = await response.json();
 
         const createForm = document.createElement("div");
         createForm.className = "form-edit";
         createForm.innerHTML = `
         <form class='editWatchForm' id=${watchId}>
-            <input type="text" name="title" value=${getWatch.title} required placeholder="title"/>
-            <input type="text" name="description" value=${getWatch.description} required placeholder="description"/>
-            <input type="text" name="gender" value=${getWatch.gender} required placeholder="gender"/>
-            <input type="text" name="color" value=${getWatch.color} required placeholder="color"/>
-            <button type='submit'>Подтвердить</button>
+            <input id='inputEditAd' type="text" name="title" value=${getWatch.title} required placeholder="title"/>
+            <input id='inputEditAd' type="text" name="description" value=${getWatch.description} required placeholder="description"/>
+            <input id='inputEditAd' type="text" name="gender" value=${getWatch.gender} required placeholder="gender"/>
+            <input id='inputEditAd' type="text" name="color" value=${getWatch.color} required placeholder="color"/>
+            <button id='confirm' type='submit'>Подтвердить</button>
               </form>
         `;
         event.target.parentNode.parentNode.append(createForm);
         const form = document.querySelector(".editWatchForm");
-  
+
         // changeBtn.addEventListener("click", (change)=> {
         //   change.preventDefault();
         //   console.log(form);
@@ -50,7 +50,7 @@ if (document.querySelector('.watchContainer')) {
         //   return;
         // } )
         console.log(form);
-        
+
         form.addEventListener("submit", async (eventSub) => {
           eventSub.preventDefault();
           const formData = new FormData(form);
@@ -60,10 +60,10 @@ if (document.querySelector('.watchContainer')) {
           try {
             const response = await fetch(`/api/watch/change/${watchId}`, {
               method: "PATCH",
-              headers: {"Content-Type": "application/json"},
+              headers: { "Content-Type": "application/json" },
               body: JSON.stringify(inputs),
             });
-  
+
             const result = await response.json();
             if (result.success) {
               window.location.href = "/";
@@ -82,19 +82,19 @@ if (document.querySelector('.watchContainer')) {
 // add
 
 // const watchContainer = document.querySelector('.watchContainer');
-const addWatchForm = document.querySelector('.addWatchForm');
-addWatchForm.addEventListener('submit', async (event) => {
+const addWatchForm = document.querySelector(".addWatchForm");
+addWatchForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const formData = new FormData(addWatchForm);
   console.log(formData);
   try {
-    const response = await fetch('/api/watch', {
-      method: 'POST',
+    const response = await fetch("/api/watch", {
+      method: "POST",
       body: formData,
     });
 
     // await response.json();
-    window.location.href = '/';
+    window.location.href = "/";
 
     // if (result) {
     //   const watchCard = document.createElement('div');
@@ -105,7 +105,7 @@ addWatchForm.addEventListener('submit', async (event) => {
     //     <button id=${result.id} class='changeBtn' type='button'>Отредактировать</button>
     //   ` : '';
 
-    //   watchCard.innerHTML = ` 
+    //   watchCard.innerHTML = `
     //   <img src=${result.img} />
     //   <p>${result.title}</p>
     //   <p>${result.description}</p>

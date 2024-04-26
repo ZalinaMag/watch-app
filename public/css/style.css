@@ -1,33 +1,48 @@
-body {
-  background-attachment: scroll;
+.bg-ex-parallax {
+  background: url(./image/duotone\(111\).png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+.bg-ex-parallax .parallax-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Прозрачность */
+  z-index: 2;
+}
+.bg-ex-parallax span {
+  z-index: 3;
 }
 
 .bg-light {
-  background-color: rgb(252, 249, 249) !important;
+  background-color: transparent !important;
 }
 
 .btn {
   margin-left: 5px;
-  background-color: transparent;
-  border: 1px solid rgb(250, 248, 248);
-  color: rgb(10, 10, 10);
+  background-color: transparent !important;
+  border: 0px;
+  color: rgb(10, 10, 10) !important;
 }
 
 .btn:hover {
-  background-color: transparent;
-  color: rgb(12, 12, 12);
-  border: 1px solid rgb(250, 247, 247);
+  background: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(238 241 245 / 50%) !important;
 }
 
 .btn:focus {
   outline: none;
+  box-shadow: 0 0 0 0.25rem rgb(238 241 245 / 50%);
 }
 
 .btn:active {
-  background-color: transparent;
-  color: rgb(252, 251, 251);
-  border: 1px solid rgb(8, 8, 8);
+  color: rgb(10, 10, 10);
+  box-shadow: 0 0 0 0.25rem rgb(238 241 245 / 50%);
 }
+
 .navbar-brand {
   position: relative;
   color: rgb(7, 7, 7);
@@ -69,8 +84,10 @@ body {
 }
 
 .carousel-inner {
+  margin-top: 20px;
   width: 80% !important;
-  border-radius: 10%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 6px #888;
 }
 
 .spanDetails {
@@ -89,8 +106,9 @@ body {
   outline: none;
   border: none;
   background-color: hsl(240, 57%, 91%);
-
+  border-radius: 8px;
   font-weight: 500;
+  background-color: transparent;
 }
 
 .order:hover {
@@ -105,7 +123,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  border: 4px solid #838585;
+  border: 4px solid #3cefff;
   transform-origin: center;
   transform: scale(1);
   border-radius: 8px;
@@ -134,7 +152,15 @@ body {
     no-repeat;
   /*setting our background image*/
   background-size: 100%;
-  border-radius: 45%;
+  border-radius: 50%;
+}
+
+@media only screen and (max-width: 991px) {
+  #clockContainer {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
 }
 
 #hour,
@@ -174,7 +200,7 @@ p {
   padding-top: 20px;
   display: flex;
   justify-content: center;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .btnAdminDiv,
@@ -195,6 +221,7 @@ h2,
   justify-content: space-evenly;
 }
 
+#confirm,
 .addNewFile,
 .delBtn,
 .changeBtn {
@@ -212,6 +239,7 @@ h2,
   font-weight: 500;
 }
 
+#confirm:hover,
 .addNewFile:hover,
 .delBtn:hover,
 .changeBtn:hover {
@@ -308,11 +336,13 @@ input::file-selector-button {
 .btnSave,
 .btnClose {
   border-radius: 8px;
+  border: 0px;
   width: 80px;
   height: 30px;
-  background-color: #0d6efd;
+  background-color: #3cefff;
   border: 1px soldid white;
-  color: white;
+  color: rgb(7, 7, 7);
+  font-weight: 500;
 }
 
 .filterContain {
@@ -371,7 +401,7 @@ input::file-selector-button {
 .btnColorSilver::after {
   content: "";
   z-index: -1;
-  background-color: hsla(0, 0%, 100%, 0.2);
+  background-color: hsl(175, 88%, 77%);
   position: absolute;
   top: -50%;
   bottom: -50%;
@@ -390,6 +420,7 @@ input::file-selector-button {
 
 #span {
   position: relative;
+  background-attachment: local;
 }
 
 #span::before {
@@ -411,8 +442,12 @@ input::file-selector-button {
 }
 
 .details {
-  font-weight: 500;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
   border: 1px solid white;
+  background-color: transparent;
+  border: 0px;
 }
 
 .addNewCard {
@@ -432,6 +467,8 @@ input::file-selector-button {
 
 .watchCard {
   position: relative;
+  border-radius: 10px;
+  background: white;
 }
 
 .watchCard {
@@ -457,7 +494,7 @@ input::file-selector-button {
   right: 50%;
   text-transform: uppercase;
   font-family: verdana;
-  font-size: 3em;
+  font-size: 2vw;
   font-weight: 700;
   color: #f5f5f5;
   text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1px #919191,
@@ -471,4 +508,14 @@ input::file-selector-button {
 .head {
   display: flex;
   justify-content: center;
+}
+
+.form-edit {
+  display: grid;
+  justify-content: center;
+}
+
+#inputEditAd {
+  margin-bottom: 8px;
+  margin-left: 0px;
 }
