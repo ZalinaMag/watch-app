@@ -15,6 +15,12 @@ module.exports = function Layout({ children, login, title }) {
         />
 
         <link rel="stylesheet" href="/css/style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
         <title>{title ? title : "Watch"}</title>
       </head>
       <header>
@@ -261,6 +267,7 @@ module.exports = function Layout({ children, login, title }) {
           defer
           src="https://www.papaparse.com/resources/js/papaparse.js"
         ></script>
+        <script defer src="/js/index.js" />
       </body>
     </html>
   );

@@ -74,6 +74,7 @@ function Home({ login, allWatch }) {
         <div className="makeOrder">
           <button className="order">Сделать заказ</button>
         </div>
+        <div class="parallax">
         <div className="filterContainMain">
           <div className="filterContain">
             <button className="btnGenderMan">мужские</button>
@@ -214,6 +215,7 @@ function Home({ login, allWatch }) {
           </div>
           <div>Адрес</div>
         </footer>
+        </div>
         <script defer src="/js/modal.js"></script>
         <script defer src="/js/watchCard.js" />
         <script defer src="/js/filter.js" />
