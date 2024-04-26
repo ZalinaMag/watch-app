@@ -31,9 +31,4 @@ if (document.querySelector(".btnSave")) {
   });
 }
 
-// const order = document.querySelector(".order");
-// {
-//   order.addEventListener("click", () => {
-//     window.location.href = "/order";
-//   });
-// }
+
