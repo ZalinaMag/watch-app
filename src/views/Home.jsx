@@ -5,7 +5,7 @@ const Layout = require("./Layout");
 function Home({ login, allWatch }) {
   return (
     <Layout login={login}>
-      <body>
+      
         <div
           id="carouselExampleControls"
           className="carousel slide"
@@ -74,7 +74,7 @@ function Home({ login, allWatch }) {
         <div className="makeOrder">
           <button className="order">Сделать заказ</button>
         </div>
-        <div class="parallax">
+        <h3 className="orderErrMsgLog"></h3>
         <div className="filterContainMain">
           <div className="filterContain">
             <button className="btnGenderMan">мужские</button>
@@ -220,7 +220,7 @@ function Home({ login, allWatch }) {
         <script defer src="/js/watchCard.js" />
         <script defer src="/js/filter.js" />
         <script defer src="/js/scrool.js" />
-      </body>
+      
     </Layout>
   );
 }
