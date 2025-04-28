@@ -215,7 +215,6 @@ function Home({ login, allWatch }) {
           </div>
           <div>Адрес</div>
         </footer>
-        </div>
         <script defer src="/js/modal.js"></script>
         <script defer src="/js/watchCard.js" />
         <script defer src="/js/filter.js" />
