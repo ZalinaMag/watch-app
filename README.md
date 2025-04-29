@@ -1,6 +1,6 @@
-# Watch Project is a server-side rendered React (SSR) web application, fully written in modern JavaScript (ES6+)
+# A study project representing custom watches web app
 
-This is a study project for online custom watch shop.
+This web application is a a server-side-rendered React application (SSR) built with Node.js, Express and PostgreSQL.
 
 ## Stack
 <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
