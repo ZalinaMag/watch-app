@@ -21,7 +21,7 @@ In the project directory, you can run:
 ### `npm run dev`
 
 Runs the app in the development mode.\
-Open [http://localhost:3002](http://localhost:3002) to view it in the browser.
+Open [http://localhost:3002](http://localhost:3002) to view it in the browser.  
 Swagger documentation is available on [http://localhost:3002/api-docs](http://localhost:3002/api-docs)  
 API status can be seen on [http://localhost:3002/status](http://localhost:3002/status)
 
