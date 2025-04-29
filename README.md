@@ -1,4 +1,4 @@
-# Watch-app is a study server-side-rendered (SSR) React web application built with Node.js, Express and PostgreSQL.
+# Watch-app study project is a server-side-rendered (SSR) React web application built with Node.js, Express and PostgreSQL.
 
 An interactive web portfolio showcasing an assortment of custom watches, where users can browse models, view details, and place orders. 
 
