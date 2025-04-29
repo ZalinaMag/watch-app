@@ -1,6 +1,6 @@
-# A study project representing custom watches web app
+# An interactive web portfolio showcasing an assortment of custom watches, where users can browse models, view details, and place orders. 
 
-This web application is a a server-side-rendered React application (SSR) built with Node.js, Express and PostgreSQL.
+This study web application is a a server-side-rendered React application (SSR) built with Node.js, Express and PostgreSQL.
 
 ## Stack
 <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
