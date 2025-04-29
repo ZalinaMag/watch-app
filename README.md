@@ -1,1 +1,26 @@
-## Общие сведения
+# Watch Project is a server-side rendered React (SSR) web application, fully written in modern JavaScript (ES6+)
+
+This is a study project for online custom watch shop.
+
+## Stack
+<img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
+<img src="https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
+<img src="https://img.shields.io/badge/Express%20js-000000?style=for-the-badge&logo=express&logoColor=white" />
+<img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
+<img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white" />
+<img src="https://img.shields.io/badge/Babel-F9DC3E?style=for-the-badge&logo=babel&logoColor=white" />
+
+## Features
+- Role-based authentication with separate user and admin access levels
+- Order submission form with image upload support (powered by Multer)
+  
+## Script to run locally
+
+In the project directory, you can run:
+
+### `npm run dev`
+
+Runs the app in the development mode.\
+Open [http://localhost:3002](http://localhost:3002) to view it in the browser.
+
+Reload page if you make edits.\
