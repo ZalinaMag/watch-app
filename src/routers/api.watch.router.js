@@ -7,6 +7,35 @@ const { Watch } = require('../../db/models');
 const renderTemplate = require('../utils/renderTemplate');
 const Edit = require('../views/Edit.jsx');
 
+/**
+ * @openapi
+ * /api/watch:
+ *   get:
+ *     summary: Получить список часов с фильтрацией по gender и color
+ *     tags:
+ *       - Watch
+ *     parameters:
+ *       - in: query
+ *         name: gender
+ *         schema:
+ *           type: string
+ *         description: Фильтр по полу
+ *       - in: query
+ *         name: color
+ *         schema:
+ *           type: string
+ *         description: Фильтр по цвету
+ *     responses:
+ *       200:
+ *         description: Массив объектов Watch
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Watch'
+ */
+
 watchRouter.get('/', async (req, res) => {
   try {
     const { gender, color } = req.query;
@@ -24,6 +53,30 @@ console.log('heee', req.query);
   }
 });
 
+/**
+ * @openapi
+ * /api/watch/{id}:
+ *   get:
+ *     summary: Получить один объект Watch по ID
+ *     tags:
+ *       - Watch
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID часов
+ *     responses:
+ *       200:
+ *         description: Объект Watch
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Watch'
+ *       404:
+ *         description: Часы не найдены
+ */
 watchRouter.get('/:id', async (req, res) => {
   try {
     const oneWatch = await Watch.findOne({ where: { id: req.params.id } });
@@ -35,6 +88,47 @@ watchRouter.get('/:id', async (req, res) => {
 });
 
 // add new
+/**
+ * @openapi
+ * /api/watch:
+ *   post:
+ *     summary: Создать новый объект Watch
+ *     tags:
+ *       - Watch
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *               - description
+ *               - gender
+ *               - color
+ *               - image
+ *             properties:
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               gender:
+ *                 type: string
+ *               color:
+ *                 type: string
+ *               image:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: Созданный объект Watch
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Watch'
+ *       400:
+ *         description: Недостаточно данных
+ */
 const upload = multer({ storage });
 
 watchRouter.post('/', upload.single('image'), async (req, res) => {
@@ -82,6 +176,30 @@ watchRouter.post('/', upload.single('image'), async (req, res) => {
 //   }
 // });
 
+/**
+ * @openapi
+ * /api/watch/change/{id}:
+ *   get:
+ *     summary: Получить HTML-форму для редактирования Watch по ID
+ *     tags:
+ *       - Watch
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID редактируемого товара
+ *     responses:
+ *       200:
+ *         description: HTML-код формы редактирования
+ *         content:
+ *           text/html:
+ *             schema:
+ *               type: string
+ *       404:
+ *         description: Часы не найдены
+ */
 watchRouter.get('/change/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -98,6 +216,56 @@ watchRouter.get('/change/:id', async (req, res) => {
   }
 });
 
+/**
+ * @openapi
+ * /api/watch/change/{id}:
+ *   patch:
+ *     summary: Обновить поля Watch по ID
+ *     tags:
+ *       - Watch
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID обновляемого товара
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *               - gender
+ *               - color
+ *             properties:
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               gender:
+ *                 type: string
+ *               color:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Успешное обновление
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *       400:
+ *         description: Недостаточно данных в запросе
+ *       404:
+ *         description: Часы не найдены
+ *       500:
+ *         description: Внутренняя ошибка сервера
+ */
 watchRouter.patch('/change/:id', async (req, res) => {
   const { id } = req.params;
   const {
@@ -126,6 +294,26 @@ watchRouter.patch('/change/:id', async (req, res) => {
 
 
 // delete
+/**
+ * @openapi
+ * /api/watch/{id}:
+ *   delete:
+ *     summary: Удалить Watch по ID
+ *     tags:
+ *       - Watch
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID удаляемых часов
+ *     responses:
+ *       200:
+ *         description: Успех
+ *       404:
+ *         description: Часы не найдены
+ */
 watchRouter.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;

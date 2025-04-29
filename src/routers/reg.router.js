@@ -2,6 +2,36 @@ const regRouter = require("express").Router();
 const bcrypt = require("bcrypt");
 const { User } = require("../../db/models");
 
+/**
+ * @openapi
+ * /reg:
+ *   post:
+ *     summary: Регистрация нового пользователя
+ *     tags:
+ *       - Auth
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - login
+ *               - email
+ *               - password
+ *             properties:
+ *               login:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Успешная регистрация (пустой JSON)
+ *       400:
+ *         description: Пользователь с таким логином или email уже существует
+ */
 regRouter.post("/", async (req, res) => {
   try {
     const { login, email, password } = req.body;

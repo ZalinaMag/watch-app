@@ -2,6 +2,33 @@ const loginRouter = require("express").Router();
 const bcrypt = require("bcrypt");
 const { User } = require("../../db/models");
 
+/**
+ * @openapi
+ * /login:
+ *   post:
+ *     summary: Аутентификация пользователя
+ *     tags:
+ *       - Auth
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - login
+ *               - password
+ *             properties:
+ *               login:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Успешный логин (пустой JSON)
+ *       401:
+ *         description: Неверный логин или пароль
+ */
 loginRouter.post("/", async (req, res) => {
   try {
     const { login, password } = req.body;
