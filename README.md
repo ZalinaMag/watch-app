@@ -11,11 +11,28 @@ An interactive web portfolio showcasing an assortment of custom watches, where u
   
 ## Script to run locally
 
-In the project directory, you can run:
+1. Create your database
+  Start PostgreSQL (install before if needed and create user too), then create your database (inside psql):
 
-### `npm run dev`
+  ### `CREATE DATABASE watch`
 
-Runs the app in the development mode.\
+2. Create your local .env
+  In the server folder, create a file named .env with these contents:
+
+  PORT=3002
+  DB=postgres://<YOUR_DB_USER>:<YOUR_DB_PASSWORD>@localhost:5432/watch
+  SESSION_SECRET=<YOUR_SECRET>
+
+3. Run Sequelize migrations & seeders
+   
+  ### `npm install`
+  ### `npx sequelize db:migrate`npx sequelize db:migrate
+  ### `npx sequelize db:seed:all`npx sequelize db:seed:all
+
+4. Start the server in development mode:
+
+  ### `npm run dev`
+
 Open [http://localhost:3002](http://localhost:3002) to view it in the browser.  
 Swagger documentation is available on [http://localhost:3002/api-docs](http://localhost:3002/api-docs)  
 API status can be seen on [http://localhost:3002/status](http://localhost:3002/status)
